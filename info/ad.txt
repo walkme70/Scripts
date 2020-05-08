@@ -1,0 +1,3 @@
+Import-Module ActiveDirectory
+$groups = "AWS-IAM-PCI-Prod-Admin","AWS-IAM-PCI-Prod-Deploy","AWS-IAM-PCI-Prod-Monitoring"
+foreach($group in $groups){Get-ADGroupMember -Identity $group -Recursive | Select-Object SamAccountName}

@@ -1,0 +1,22 @@
+dd-Type -Path "WinSCPnet.dll"
+
+$sessionOptions = New-Object WinSCP.SessionOptions -Property @{
+    Protocol = [WinSCP.Protocol]::Ftp
+    HostName = "ftp.example.com"
+    UserName = "username"
+    Password = "password"
+}
+
+$session = New-Object WinSCP.Session
+$session.Open($sessionOptions)
+
+if ($session.FileExists("/remote/path/file.txt"))
+{
+    Write-Host "Exists"
+}
+else
+{
+    Write-Host "Does not exist"
+}
+(I'm the author of WinSCP)
+
